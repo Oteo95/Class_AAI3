@@ -223,8 +223,8 @@ class ModelHandler:
 
 
 if __name__ == "__main__":
-    customers = pd.read_csv("/workspaces/new_bpp/data/customer_data.csv")
-    trans = pd.read_csv("/workspaces/new_bpp/data/transactions_data.csv")
+    customers = pd.read_csv("/workspaces/Class_AAI3/data/customer_data.csv")
+    trans = pd.read_csv("/workspaces/Class_AAI3/data/transactions_data.csv")
     import datetime
     trans["Date"] = [
         datetime.datetime.strptime(date_, '%Y-%m-%d')
@@ -239,7 +239,7 @@ if __name__ == "__main__":
     vh.run_feat_buider()
     vh.categorical_to_numerical()
 
-    mh = ModelHandler("/workspaces/new_bpp/config/config_trans.yaml")
+    mh = ModelHandler("/workspaces/Class_AAI3/config/config_trans.yaml")
     train_df, test_df, target, target_test = train_test_split(
         vh.df.loc[:, mh.features],
         vh.df["Incomplete Transaction"],
@@ -247,7 +247,7 @@ if __name__ == "__main__":
         random_state=77
     )
 
-    a, b = mh.kfold_testing(train_df, target, test_df, target_test, "ada")
+    a, b = mh.kfold_testing(train_df, target, test_df, "ada")
     print(a)
     _, _, c1 = mh.train_predict_model(train_df, target, test_df, "xgboost")
     _, _, c2 = mh.train_predict_model(train_df, target, test_df, "ada")

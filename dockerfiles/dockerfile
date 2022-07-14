@@ -6,7 +6,7 @@ COPY dockerfiles/requirements.txt /tmp/
 RUN set -ex; \
     pip3 --no-cache-dir install --requirement /tmp/requirements.txt
 
-ENV PYTHONPATH "/workspaces/new_bpp/src"
+ENV PYTHONPATH "/workspaces/Class_AAI3/src"
 
 
 ARG USERNAME=research
