@@ -5,4 +5,4 @@ import pandas as pd
 @pytest.fixture
 def read_df() -> pd.DataFrame:
 
-    return pd.read_csv("customer_data.csv")
+    return pd.read_csv("/workspaces/Class_AAI3/data/customer_data.csv")
